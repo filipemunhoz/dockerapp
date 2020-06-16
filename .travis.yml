@@ -1,0 +1,17 @@
+language: bash
+services: docker
+before_install:
+  - cd filipeapp
+  - echo "Docker folder"
+script:
+  - docker-compose build
+before_deploy:
+ - echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker push fcmunhoz/filipeapp
+  on:
+    branch: master
+notifications:
+  email: false

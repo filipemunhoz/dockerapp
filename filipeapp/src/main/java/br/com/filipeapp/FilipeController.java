@@ -9,7 +9,7 @@ public class FilipeController {
 	@GetMapping(value = "/")
 	public String greeting() {
 		
-		return "Bem vindo";
+		return "Bem vindo ao servico";
 	}
 	
 }

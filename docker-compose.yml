@@ -2,19 +2,16 @@ version: '3.4'
 
 services:
     filipeapp:
-        image: fcmunhoz/filipeapp
+        image: filipeapp
         restart: always
         build: ./filipeapp
         working_dir: /filipeapp
         environment:
             TZ: America/Sao_Paulo
             SPRING-BOOT-ENVIRONMENT: Production
-        volumes:
-          - ./filipeapp:/filipeapp
-          - ~/.m2:/root/.m2
         ports:
           - "8080:8080"
-        command: mvn clean spring-boot:run
+        command: mvn spring-boot:run
         networks:
           - udemy-network
 networks:

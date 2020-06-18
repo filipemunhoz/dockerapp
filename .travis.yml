@@ -20,8 +20,7 @@ before_deploy:
 deploy:
   provider: script
   script:
-    docker tag filipeapp: latest 
-      fcmunhoz/filipeapp:$TRAVIS_JOB_ID;
+    docker tag filipeapp: latest fcmunhoz/filipeapp:$TRAVIS_JOB_ID;
     docker push fcmunhoz/filipeapp: $TRAVIS_JOB_ID;
   on:
     branch: master

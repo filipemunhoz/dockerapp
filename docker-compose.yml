@@ -7,14 +7,14 @@ services:
       restart: always
       environment:
         TZ: America/Sao_Paulo
-        MYSQL_ROOT_PASSWORD: docker
-        MYSQL_USER: docker
-        MYSQL_PASSWORD: docker
-        MYSQL_DATABASE: climate
-    ports:
-      - "3308:3306"
-    networks:
-      - udemy-network
+        MYSQL_ROOT_PASSWORD: AJNdwad$$5ed2*
+        MYSQL_USER: filipe
+        MYSQL_PASSWORD: AJNdwad$$5ed2*
+        MYSQL_DATABASE: climates
+      ports:
+        - "3308:3306"
+      networks:
+        - udemy-network
     filipeapp:
         image: filipeapp
         restart: always

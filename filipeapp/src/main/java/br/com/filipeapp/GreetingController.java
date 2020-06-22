@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.filipeapp.model.climate.Climate;
+import br.com.filipeapp.climate.model.Climate;
 import br.com.filipeapp.service.ClimateService;
 
 @RestController
@@ -22,29 +24,16 @@ public class GreetingController {
 	ClimateService climateService;
 	
 	
-	@RequestMapping(value = "/")
-	public String greeting() throws Exception {
-		
-		StringBuilder s = new StringBuilder();
-		
-		List<Climate> climates = climateService.getClimates();
-		for (Climate climate : climates) {
-			
-			s.append(System.getProperty("line.separator"));
-			s.append("City: ");
-			s.append(climate.getCity());
-			s.append(System.getProperty("line.separator"));
-			s.append("Temperature: ");
-			s.append(climate.getTemperature().getDegrees());
-			s.append(System.getProperty("line.separator"));			
-		}
-		
+	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Climate> greeting() throws Exception {
 
-		
-		return String.format(template, counter.getAndIncrement()) +  " " + s.toString();
+		List<Climate> climates = climateService.getClimates();
+
+		return climates;
+		//return String.format(template, counter.getAndIncrement()) +  " " + s.toString();
 	}
 	
-	@RequestMapping(value = "/greeting")
+	@GetMapping(value = "/greeting")
 	public Greeting greeting(@RequestParam(value="name", defaultValue = "world") String name) {	
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
 	}

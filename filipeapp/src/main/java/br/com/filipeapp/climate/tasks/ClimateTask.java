@@ -21,8 +21,8 @@ public class ClimateTask {
 	private ClimateDbService climateDbService;
 
 	
-	//@Scheduled(fixedRate = 2000)
-	@Scheduled(cron = "* * * * * *")
+	@Scheduled(fixedRate = 60000)
+	//@Scheduled(cron = "* * * * * *")
 	public void get() throws IOException {
 		
 		List<Climate> climates = climateService.getClimates();

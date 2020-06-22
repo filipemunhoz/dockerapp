@@ -21,6 +21,7 @@ public class GreetingController {
 	@Autowired
 	ClimateService climateService;
 	
+	
 	@RequestMapping(value = "/")
 	public String greeting() throws Exception {
 		

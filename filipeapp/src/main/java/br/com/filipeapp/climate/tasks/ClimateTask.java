@@ -22,7 +22,7 @@ public class ClimateTask {
 
 	
 	//@Scheduled(fixedRate = 2000)
-	@Scheduled(cron = "30 0-23 * * * *")
+	@Scheduled(cron = "* * * * * *")
 	public void get() throws IOException {
 		
 		List<Climate> climates = climateService.getClimates();

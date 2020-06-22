@@ -1,6 +1,9 @@
 package br.com.filipeapp.climate.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,8 +32,14 @@ public class Climate {
 	@JsonProperty("timezone")
 	private String timezone;
 	
+	@Column(name = "_time")
+	private LocalDateTime time = LocalDateTime.now();	
+	
 	@JsonProperty("name")
 	private String city;
+
+	@JsonProperty("visibility")
+	private String visibility;
 	
 	//@JsonProperty("weather")
 //    //private Weather weather;

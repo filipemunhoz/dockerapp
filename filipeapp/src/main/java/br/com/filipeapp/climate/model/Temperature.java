@@ -1,6 +1,5 @@
 package br.com.filipeapp.climate.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +22,9 @@ public class Temperature {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;	
+	
+//	colocar id_cidade
+//	colocar data/hora
 	
     @JsonProperty("temp")
     private Double degrees;

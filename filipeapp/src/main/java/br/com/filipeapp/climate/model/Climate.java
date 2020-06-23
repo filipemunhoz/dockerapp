@@ -1,6 +1,7 @@
 package br.com.filipeapp.climate.model;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class Climate {
 	private String cityName;	
 	
 	@Column(name = "_time")
-	private LocalDateTime time = LocalDateTime.now();	
+	private LocalDateTime time = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));	
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "city_id", referencedColumnName = "id")

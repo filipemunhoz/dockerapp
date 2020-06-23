@@ -17,7 +17,10 @@ public class CityService {
 	
 	private List<City> cities = List.of(
 									new City("Atibaia"),
-									new City("Andradas"),
+									new City("Andradas"),									
+									new City("Extrema"),
+									new City("Torrinha"),
+									new City("Governador Valadares"),
 									new City("Guarulhos")
 								);
 	

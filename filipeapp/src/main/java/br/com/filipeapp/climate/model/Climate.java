@@ -2,14 +2,17 @@ package br.com.filipeapp.climate.model;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -46,8 +49,10 @@ public class Climate {
 	@JsonProperty("visibility")
 	private String visibility;
 	
-	//@JsonProperty("weather")
-//    //private Weather weather;
+	@JsonProperty("weather")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "climate_id")
+    private List<Weather> weather;
 	
 	@JsonProperty("main")
 	@OneToOne(cascade = CascadeType.ALL)
@@ -64,5 +69,8 @@ public class Climate {
 	@JoinColumn(name = "cloud_id", referencedColumnName = "id")
     private Cloud cloud;
 	
-
+	@JsonProperty("sys")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "sunlight_id", referencedColumnName = "id")
+    private Sunlight sunlight;
 }

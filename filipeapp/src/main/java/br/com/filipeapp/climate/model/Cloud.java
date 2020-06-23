@@ -25,6 +25,5 @@ public class Cloud {
 	
 	@JsonProperty("all")
 	private Integer allData;
-
 	
 }

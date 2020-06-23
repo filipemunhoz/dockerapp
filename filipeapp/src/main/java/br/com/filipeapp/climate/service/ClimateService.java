@@ -57,8 +57,7 @@ public class ClimateService {
 			climate.setCity(city);
 		}catch (IOException e) {
 			e.printStackTrace();
-		}
-			
+		}			
 		return climate;
 	}
 }

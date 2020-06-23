@@ -31,12 +31,16 @@ public class Climate {
 	
 	@JsonProperty("timezone")
 	private String timezone;
+
+	@JsonProperty("name")
+	private String cityName;	
 	
 	@Column(name = "_time")
 	private LocalDateTime time = LocalDateTime.now();	
 	
-	@JsonProperty("name")
-	private String city;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "city_id", referencedColumnName = "id")
+    private City city;
 
 	@JsonProperty("visibility")
 	private String visibility;

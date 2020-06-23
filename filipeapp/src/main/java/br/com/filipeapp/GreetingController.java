@@ -20,16 +20,16 @@ public class GreetingController {
 	private final AtomicLong counter = new AtomicLong();
 	
 	@Autowired
-	ClimateService climateService;
+	private ClimateService climateService;
 	
 	
 	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Climate> greeting() throws Exception {
 
+		counter.incrementAndGet();
 		List<Climate> climates = climateService.getClimates();
 
 		return climates;
-		//return String.format(template, counter.getAndIncrement()) +  " " + s.toString();
 	}
 	
 	@GetMapping(value = "/greeting")

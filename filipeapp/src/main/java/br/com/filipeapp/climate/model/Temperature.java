@@ -27,22 +27,22 @@ public class Temperature {
 //	colocar data/hora
 	
     @JsonProperty("temp")
-    private Double degrees;
+    private Integer degrees;
     
     @JsonProperty("feels_like")
-    private Double feelsLike;
+    private Integer feelsLike;
     
     @JsonProperty("temp_min")
-    private Double minimal;
+    private Integer minimal;
     
     @JsonProperty("temp_max")
-    private Double maximum;
+    private Integer maximum;
     
     @JsonProperty("pressure")
-    private Double pressure;
+    private Integer pressure;
     
     @JsonProperty("humidity")
-    private Double humidity;
+    private Integer humidity;
     
     @JsonProperty("sea_level")
     private Double seaLevel;

@@ -1,5 +1,7 @@
 package br.com.filipeapp.climate.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,9 +26,9 @@ public class Wind {
 	private Integer id;	
 	
 	@JsonProperty("speed")
-	private Double speed;
+	private BigDecimal speed;
 	
 	@JsonProperty("deg")
-	private Double degrees;
+	private Integer degrees;
 	
 }

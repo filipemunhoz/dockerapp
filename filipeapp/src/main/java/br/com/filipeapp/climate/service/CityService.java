@@ -16,12 +16,13 @@ public class CityService {
 	private CityDbService cityDbService;
 	
 	private List<City> cities = List.of(
-									new City("Atibaia"),
-									new City("Andradas"),									
-									new City("Extrema"),
-									new City("Torrinha"),
-									new City("Governador Valadares"),
-									new City("Guarulhos")
+									new City("Atibaia,BR"),
+									new City("Andradas,BR"),									
+									new City("Extrema,BR"),
+									new City("Torrinha,BR"),
+									new City("Governador Valadares,BR"),
+									new City("Guarulhos,BR"),
+									new City("Socorro,BR")
 								);
 	
 	public void initialize() {		

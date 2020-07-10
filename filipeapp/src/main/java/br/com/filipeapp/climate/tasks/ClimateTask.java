@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
 import br.com.filipeapp.climate.db.service.ClimateDbService;
 import br.com.filipeapp.climate.model.Climate;
 import br.com.filipeapp.climate.service.ClimateService;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class ClimateTask {
 
 	@Autowired
@@ -21,16 +23,14 @@ public class ClimateTask {
 	private ClimateDbService climateDbService;
 
 	
-	@Scheduled(fixedRate = 60*60*1000, initialDelay = 60000)
+	@Scheduled(fixedRate = 60*60*1000, initialDelay = 2000)
 	public void get() throws IOException {
 		
 		List<Climate> climates = climateService.getClimates();
 		for (Climate climate : climates) {
-			System.out.println("#####SAVING: " + climate.getCity() + " - " + climate.getTemperature());
 			
-			climateDbService.save(climate);
-			
+			log.info("#####SAVING: " + climate.getCity() + " - " + climate.getTemperature());
+			climateDbService.save(climate);			
 		}
-	}
-	
+	}	
 }

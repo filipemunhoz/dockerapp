@@ -1,0 +1,7 @@
+{"properties": [
+  {
+    "name": "filipeapp",
+    "type": "br.com.filipeapp.configuration.AppConfigurationProperties",
+    "description": "Application Configuration"
+  }
+]}

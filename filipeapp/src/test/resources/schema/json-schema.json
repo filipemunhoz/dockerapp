@@ -1,0 +1,41 @@
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/fcmunhoz/filipeapp/schemas",
+  "title": "Filipe App Schema",
+  "description": "this schema describes a use of valdation",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 20
+    },
+    "timeout": {
+      "type": "integer",
+      "description": "timeout in mliliseconds",
+      "minimum": 50,
+      "maximum": 10000
+    },
+    "active":{
+      "type": "boolean"
+    },
+    "contatcs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "country":{
+            "type": "string"
+          },
+          "number": {
+            "type": "integer"
+          }
+        },
+        "required": ["country", "number"]
+      }
+    }
+  },
+  "required": ["name", "active", "contacts", "timeout"]
+}

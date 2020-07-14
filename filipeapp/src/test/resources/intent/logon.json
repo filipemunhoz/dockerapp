@@ -1,0 +1,15 @@
+{
+  "name": "LOGON",
+  "active": true,
+  "contacts": [
+    {
+      "country": 55,
+      "number": "47 9423-2341"
+    },
+    {
+      "country": 55,
+      "number": "68 9829-0052"
+    }
+  ],
+  "timeout": 1000
+}

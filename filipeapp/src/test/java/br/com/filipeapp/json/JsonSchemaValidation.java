@@ -1,6 +1,7 @@
 package br.com.filipeapp.json;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.validation.ValidationException;
@@ -15,21 +16,25 @@ import org.springframework.util.Assert;
 
 public class JsonSchemaValidation {
 
-	private final String schemaDirectory = "/schema/";
-	private final String payloadsDirectory = "/intent/";
+	private final String JSON_SCHEMA = "/schema/json-schema.json";
+	private final String PAYLOADS = "/intent/";
+	private final String SCHEMA_NOT_FOUND = "Schema not found";
 	
 	@Test
-	public void givenInvalidInput_whenValidating_thenInvalid() throws ValidationException, IOException {
+	public void validatePayloadsAgainstSchema() throws ValidationException, IOException {
 		
-		JSONObject jsonSchema = new JSONObject(new JSONTokener(JsonSchemaValidation.this.getClass().getResourceAsStream(schemaDirectory + "json-schema.json")));
-		Assert.notNull(jsonSchema, "Schema not found");
+		JSONObject jsonSchema = getJSONObject(JSON_SCHEMA);
+		Assert.notNull(jsonSchema, SCHEMA_NOT_FOUND);
 		
-		List<String> files = IOUtils.readLines(JsonSchemaValidation.this.getClass().getResourceAsStream(payloadsDirectory), "UTF-8");
+		List<String> files = IOUtils.readLines(JsonSchemaValidation.this.getClass().getResourceAsStream(PAYLOADS), StandardCharsets.UTF_8);
 		
 		Schema schema = SchemaLoader.load(jsonSchema);
 		files.forEach(filename -> {			
-			JSONObject json = new JSONObject(new JSONTokener(JsonSchemaValidation.this.getClass().getResourceAsStream(payloadsDirectory + filename)));
-			schema.validate(json);
+			schema.validate(getJSONObject(PAYLOADS + filename));
 		});
-	}	
+	}
+	
+	private JSONObject getJSONObject(final String filename) {
+		return new JSONObject(new JSONTokener(JsonSchemaValidation.this.getClass().getResourceAsStream(filename)));
+	}
 }

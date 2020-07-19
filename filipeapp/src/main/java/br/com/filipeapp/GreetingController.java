@@ -15,7 +15,7 @@ import br.com.filipeapp.climate.service.ClimateService;
 @RestController
 public class GreetingController {
 	
-	private static final String template = "Hello, %d! \n";
+	private static final String template = "Hello, %s! \n";
 	
 	private final AtomicLong counter = new AtomicLong();
 	
